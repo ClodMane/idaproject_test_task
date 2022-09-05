@@ -8,6 +8,6 @@
 // @import "~materialize-css/dist/css/materialize.min.css";
 @import "assets/index.css";
 body {
-  background-color: #e5e5e5;
+  background: rgba(226, 225, 222, 0.579);
 }
 </style>

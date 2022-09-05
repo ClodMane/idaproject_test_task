@@ -1,0 +1,26 @@
+/* @font-face {
+    // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
+    font-family: "SourceSansPro"; 
+    // адрес шрифта и тип 
+    src: url("./fonts/SourceSansProRegular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+    } 
+
+/* .body {
+    font-family: 'Source Sans Pro', sans-serif;
+} */ 
+*,body{
+    box-sizing: border-box;
+}
+
+.home {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+@font-face {
+    font-family: "SourceSansPro";  
+    src: url("./fonts/SourceSansProRegular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal;
+     }

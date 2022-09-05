@@ -1,7 +1,9 @@
 <template>
-  <div class="home">
-    <BaseMenu />
-    <ProductCatalog />
+  <div class="home-wrapper">
+    <div class="home">
+      <BaseMenu />
+      <ProductCatalog />
+    </div>
   </div>
 </template>
 
@@ -18,3 +20,13 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.home {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 1376px;
+  margin: 0 auto;
+}
+</style>
