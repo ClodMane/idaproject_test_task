@@ -1,20 +1,17 @@
 <template>
   <div :key="item" class="catalog-item item">
-    <div class="delete-button"><button class="del-btn"></button></div>
-    <div class="item__image-wrapper">
-      <img
-        src="@/assets/images/catalog/Rectangle30.png"
-        alt="item image"
-        class="frame"
-      />
+    <div class="delete-button">
+      <button class="del-btn" @click="$emit('itemDelete', item.id)"></button>
     </div>
-    <h3 class="item__head">Наименование товара</h3>
+    <div class="item__image-wrapper">
+      <img :src="item.link" alt="item image" class="item__image" />
+    </div>
     <div class="item__body">
-      <p class="item__text">
-        Довольно-таки интересное описание товара в несколько строк.
-        Довольно-таки интересное описание товара в несколько строк
-      </p>
-      <h3 class="item__price">10 000 руб.</h3>
+      <h3 class="item__head">{{ item.title }}</h3>
+      <p class="item__text">{{ item.description }}</p>
+    </div>
+    <div class="item__footer">
+      <h3 class="item__price">{{ item.price }} руб.</h3>
     </div>
   </div>
 </template>
@@ -23,7 +20,7 @@
 export default {
   name: "CatalogItem",
   props: {
-    msg: String,
+    item: Object,
   },
 };
 </script>
@@ -34,20 +31,27 @@ export default {
   background-color: #fff;
   border-radius: 4px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &__text {
     font-size: 16px;
     line-height: 20.1px;
     color: rgba(63, 63, 63, 1);
+    min-height: 80px;
   }
 
   &__body {
     padding: 0 0 0 16px;
     width: 300px;
+    flex: 1 0 auto;
+  }
+  &__footer {
+    flex-shrink: 0;
+    padding: 0 16px;
   }
 
   &__head {
-    padding: 0 0 0 16px;
     color: rgba(63, 63, 63, 1);
     font-size: 20px;
     line-height: 25.14px;
@@ -60,7 +64,19 @@ export default {
     line-height: 30.17px;
     color: rgba(63, 63, 63, 1);
   }
+  &__image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }
+
 .del-btn {
   height: 32px;
   width: 32px;

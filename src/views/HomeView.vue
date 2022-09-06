@@ -1,8 +1,8 @@
 <template>
   <div class="home-wrapper">
     <div class="home">
-      <BaseMenu />
-      <ProductCatalog />
+      <BaseMenu @createNewObject="createNewObject" />
+      <ProductCatalog :new-item="newObject" />
     </div>
   </div>
 </template>
@@ -17,6 +17,16 @@ export default {
   components: {
     BaseMenu,
     ProductCatalog,
+  },
+  data() {
+    return {
+      newObject: {},
+    };
+  },
+  methods: {
+    createNewObject(form) {
+      this.newObject = form;
+    },
   },
 };
 </script>

@@ -32,7 +32,12 @@
     </div>
     <div class="catalog__wrapper">
       <div class="catalog">
-        <CatalogItem v-for="item in 9" :key="item" />
+        <CatalogItem
+          v-for="item in catalogItems"
+          :key="item"
+          :item="item"
+          @itemDelete="deleteItem"
+        />
       </div>
     </div>
   </div>
@@ -43,11 +48,55 @@ import CatalogItem from "@/components/CatalogItem.vue";
 
 export default {
   name: "ProductCatalog",
-  props: {
-    msg: String,
-  },
   components: {
     CatalogItem,
+  },
+  props: {
+    newItem: Object,
+  },
+  data() {
+    return {
+      catalogItems: [
+        {
+          id: 0,
+          link: "https://nuxtjs-goodss.vercel.app/product-photo.jpg",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          price: "10000",
+        },
+        {
+          id: 1,
+          link: "https://nuxtjs-goodss.vercel.app/product-photo.jpg",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          price: "10000",
+        },
+        {
+          id: 2,
+          link: "https://nuxtjs-goodss.vercel.app/product-photo.jpg",
+          title: "Наименование товара",
+          description:
+            "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+          price: "10000",
+        },
+      ],
+    };
+  },
+  watch: {
+    newItem(newVal) {
+      let item = newVal;
+      if (newVal) {
+        item.id = this.catalogItems.length;
+        this.catalogItems.unshift(item);
+      }
+    },
+  },
+  methods: {
+    deleteItem(id) {
+      this.catalogItems = this.catalogItems.filter((item) => item.id != id);
+    },
   },
 };
 </script>

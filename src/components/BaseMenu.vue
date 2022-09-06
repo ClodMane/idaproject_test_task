@@ -113,13 +113,21 @@ export default {
       price: { required },
     };
   },
+  computed: {
+    formData() {
+      return {
+        title: this.title,
+        description: this.description,
+        link: this.link,
+        price: this.price,
+      };
+    },
+  },
   methods: {
     async submitHandler() {
       const result = await this.v$.$validate();
-      if (!result) {
-        console.log("fale");
-      } else {
-        console.log("wine");
+      if (result) {
+        this.$emit("createNewObject", this.formData);
       }
     },
     inputHandler(input) {
