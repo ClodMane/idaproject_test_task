@@ -76,6 +76,15 @@ export default {
     object-fit: cover;
   }
 }
+.item:hover {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.04), 0px 8px 12px rgba(0, 0, 0, 0.04);
+  .del-btn {
+    // display: block;
+    transition: opacity 1s;
+    opacity: 1;
+    visibility: visible;
+  }
+}
 
 .del-btn {
   height: 32px;
@@ -88,5 +97,7 @@ export default {
   position: absolute;
   right: -8px;
   top: -8px;
+  // display: none;
+  visibility: hidden;
 }
 </style>

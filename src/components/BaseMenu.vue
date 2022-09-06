@@ -104,6 +104,7 @@ export default {
       description: "",
       link: "",
       price: "",
+      // isValidate: false,
     };
   },
   validations() {
@@ -168,6 +169,10 @@ export default {
   border-radius: 10px;
   color: #b4b4b4;
 }
+.form-button:hover {
+  box-shadow: 0px 1px 3px rgba(80, 130, 0, 0.3),
+    0px 1px 3px rgba(0, 141, 77, 0.3);
+}
 
 label {
   font-size: 10px;
@@ -181,6 +186,16 @@ input {
   border: none;
   background: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+  outline: none;
+}
+input:hover {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.02);
+}
+input:focus {
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.04), 0px 8px 12px rgba(0, 0, 0, 0.07);
+}
+input:active {
+  box-shadow: none;
 }
 input::-webkit-input-placeholder {
   color: #b4b4b4;
@@ -206,8 +221,23 @@ textarea {
   line-height: 15.08px;
   padding: 10px 0 0 16px;
   background: #fffefb;
+  outline: none;
+}
+textarea::-webkit-input-placeholder {
+  color: #b4b4b4;
+  font-size: 12px;
+  line-height: 15.08px;
 }
 
+textarea:hover {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.02);
+}
+textarea:focus {
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.04), 0px 8px 12px rgba(0, 0, 0, 0.07);
+}
+textarea:active {
+  box-shadow: none;
+}
 .helper-text {
   color: rgba(255, 132, 132, 1);
   font-size: 8px;
