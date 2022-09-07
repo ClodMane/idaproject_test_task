@@ -221,7 +221,7 @@ input {
   border-radius: 4px;
   padding-left: 16px;
   border: none;
-  background: #fffefb;
+  background-color: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   outline: none;
 }

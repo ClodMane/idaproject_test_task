@@ -9,7 +9,7 @@
           data-index="0"
         >
           По умолчанию
-          <span>
+          <div>
             <svg
               width="8"
               height="6"
@@ -20,8 +20,9 @@
               <path
                 d="M7.48532 1.24264L4.24268 4.48528L1.00003 1.24264"
                 stroke="#B4B4B4"
-              /></svg
-          ></span>
+              />
+            </svg>
+          </div>
         </li>
         <li
           class="select__option"
@@ -127,6 +128,7 @@ export default {
 .select {
   display: flex;
   justify-content: flex-end;
+  margin-top: 11px;
 
   &__options {
     list-style-type: none;

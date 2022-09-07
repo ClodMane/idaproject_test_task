@@ -33,6 +33,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
+  letter-spacing: 0.1px;
 
   &__text {
     font-size: 16px;
