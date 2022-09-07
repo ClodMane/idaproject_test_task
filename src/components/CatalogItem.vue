@@ -68,6 +68,8 @@ export default {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
   &__image {
     display: block;

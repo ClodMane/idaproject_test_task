@@ -7,7 +7,7 @@
         <input
           v-model="v$.title.$model"
           :class="{
-            invalid: v$.title.$dirty,
+            invalid: v$.title.$dirty && v$.title.$errors.length > 0,
           }"
           id="name"
           type="text"
@@ -17,7 +17,7 @@
           @blur="inputHandler('title')"
         />
         <small
-          class="helper-text invalid"
+          class="helper-text"
           v-if="v$.title.$dirty && v$.title.$errors.length > 0"
         >
           Поле является обязательным</small
@@ -39,7 +39,7 @@
         <input
           v-model="v$.link.$model"
           :class="{
-            invalid: v$.link.$dirty,
+            invalid: v$.link.$dirty && v$.link.$errors.length > 0,
           }"
           type="url"
           name="link"
@@ -50,12 +50,12 @@
         />
         <small
           v-if="v$.link.$dirty && v$.link.required.$invalid"
-          class="helper-text invalid"
+          class="helper-text"
         >
           Поле является обязательным
         </small>
         <small
-          class="helper-text__link invalid"
+          class="helper-text__link"
           v-else-if="v$.link.$dirty && v$.link.url.$invalid"
         >
           Введите ссылку</small
@@ -66,7 +66,7 @@
         <input
           v-model="v$.price.$model"
           :class="{
-            invalid: v$.price.$dirty,
+            invalid: v$.price.$dirty && v$.price.$errors.length > 0,
           }"
           type="number"
           name="price"
@@ -76,7 +76,7 @@
           id="price"
         />
         <small
-          class="helper-text invalid"
+          class="helper-text"
           v-if="v$.price.$dirty && v$.price.$errors.length > 0"
         >
           Поле является обязательным</small
@@ -155,6 +155,9 @@ export default {
   background: #fffefb;
   padding: 24px;
   gap: 16px;
+}
+.invalid {
+  border: 1px solid red;
 }
 .main-from-item {
   display: flex;
