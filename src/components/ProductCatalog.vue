@@ -9,6 +9,19 @@
           data-index="0"
         >
           По умолчанию
+          <span>
+            <svg
+              width="8"
+              height="6"
+              viewBox="0 0 8 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.48532 1.24264L4.24268 4.48528L1.00003 1.24264"
+                stroke="#B4B4B4"
+              /></svg
+          ></span>
         </li>
         <li
           class="select__option"
@@ -112,6 +125,9 @@ export default {
   gap: 16px;
 }
 .select {
+  display: flex;
+  justify-content: flex-end;
+
   &__options {
     list-style-type: none;
     color: #b4b4b4;
@@ -121,6 +137,18 @@ export default {
     width: 122px;
     height: 36px;
     border-radius: 4px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
   }
 }
 </style>

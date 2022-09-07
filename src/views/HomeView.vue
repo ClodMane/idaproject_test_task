@@ -38,5 +38,6 @@ export default {
   gap: 16px;
   max-width: 1376px;
   margin: 0 auto;
+  padding: 32px 0;
 }
 </style>

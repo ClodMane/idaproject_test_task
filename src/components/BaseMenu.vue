@@ -82,7 +82,9 @@
           Поле является обязательным</small
         >
       </div>
-      <button class="form-button" type="submit">Добавить товар</button>
+      <button class="form-button" :disabled="!formValidated" type="submit">
+        Добавить товар
+      </button>
     </form>
   </div>
 </template>
@@ -123,12 +125,26 @@ export default {
         price: this.price,
       };
     },
+    formValidated() {
+      return !!(
+        !this.v$.link.required.$invalid &&
+        !this.v$.link.url.$invalid &&
+        this.v$.link.$model &&
+        !this.v$.title.required.$invalid &&
+        this.v$.title.$model &&
+        !this.v$.price.required.$invalid &&
+        this.v$.price.$model
+      );
+    },
   },
   methods: {
     async submitHandler() {
       const result = await this.v$.$validate();
       if (result) {
         this.$emit("createNewObject", this.formData);
+        setTimeout(() => {
+          this.v$.$reset();
+        }, 0);
       }
     },
     inputHandler(input) {
@@ -136,11 +152,23 @@ export default {
         this.v$[input].$touch();
       }
     },
+    clearForm() {
+      this.title = "";
+      this.description = "";
+      this.link = "";
+      this.price = "";
+    },
   },
 };
 </script>
 
 <style lang="scss">
+.menu-heading {
+  margin-bottom: 16px;
+  font-size: 28px;
+  line-height: 35.2px;
+  color: rgba(63, 63, 63, 1);
+}
 .main-form {
   width: 332px;
   height: auto;
@@ -157,7 +185,7 @@ export default {
   gap: 16px;
 }
 .invalid {
-  border: 1px solid red;
+  border: 1px solid #ff8484;
 }
 .main-from-item {
   display: flex;
@@ -165,16 +193,21 @@ export default {
   width: 100%;
 }
 .form-button {
-  background-color: #eeeeee;
   width: 100%;
   padding: 12px;
   border: none;
   border-radius: 10px;
-  color: #b4b4b4;
-}
-.form-button:hover {
-  box-shadow: 0px 1px 3px rgba(80, 130, 0, 0.3),
-    0px 1px 3px rgba(0, 141, 77, 0.3);
+  background-color: #7bae73;
+  color: #fff;
+
+  &:disabled {
+    background-color: #eeeeee;
+    color: #b4b4b4;
+  }
+  &:hover {
+    box-shadow: 0px 1px 3px rgba(80, 130, 0, 0.3),
+      0px 1px 3px rgba(0, 141, 77, 0.3);
+  }
 }
 
 label {
@@ -186,6 +219,7 @@ input {
   width: 100%;
   height: 36px;
   border-radius: 4px;
+  padding-left: 16px;
   border: none;
   background: #fffefb;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
@@ -204,7 +238,6 @@ input::-webkit-input-placeholder {
   color: #b4b4b4;
   font-size: 12px;
   line-height: 15.08px;
-  padding-left: 16px;
 }
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
